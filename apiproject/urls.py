@@ -15,8 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+#url의 처리를 다른 모듈에게 위임하고자 할 떄 사용하는 패키지를 import
+
+# path('example/',include("apiapp.urls")) 문장은
+# example로 시작하는 요청이 오면 apiapp 애플리케이션의 urls.py 파일에 처리를 위임한다.
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("example/", include("apiapp.urls")),
 ]
